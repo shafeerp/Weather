@@ -64,23 +64,10 @@
      
   - [x] Helper
          All the helpers like protocols and enum responsible for the module
- 
-### App Implementaion
 
-  • Application is built by following MVVM-C Pattern with clean Architecture, which helps to achieve testable, reusable and mainatainable code
-  
-  • Application has a simple view which show current basic weather info
-  
-  • Loaders(activity indicators) will be shown during network call
-  
-  • Unit test cases are written for ViewModel, Network layer and other business logics
-  
-  • Snapshot testing has be done for Views
-  
-  • Errors are shown to UI though UIAlert
-  
-  
+
 ### Network Layer
+  In app networking is done inside the presentation layer under `Infrastructure`
 
   • Network layer consist of 
   
@@ -102,4 +89,20 @@
 
       Heart of Network layer where the actual network calls to server happens 
       
+  
+
+ 
+### App Implementaion
+
+  • Application is built by following MVVM-C Pattern with clean Architecture, which helps to achieve testable, reusable and mainatainable code
+  
+  • Application has a simple view which show current basic weather info
+  
+  • Loaders(activity indicators) will be shown during network call
+  
+  • Unit test cases are written for ViewModel, Network layer and other business logics
+  
+  • Snapshot testing has be done for Views
+  
+  • Errors are shown to UI though UIAlert
   
