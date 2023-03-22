@@ -1,5 +1,7 @@
 # Weather App
 
+![](WeatherApp.jpeg)
+
 ### Points to be mentioned
 
  • App is built using Swift 5.0 and Xcode 14.0
