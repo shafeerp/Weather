@@ -7,9 +7,11 @@
 
 import UIKit
 
+typealias EmptyClosure = () -> Void
 protocol RouterType {
     var navigationController: UINavigationController { get }
     func setRootModule(module: UIViewController)
+    func dismissModule(animated: Bool, completion: EmptyClosure?)
     func present(_ module: UIViewController, animated: Bool)
     var appSettingsManager: AppSettingsProtocol { get }
 }
@@ -31,5 +33,9 @@ final class Router: RouterType {
     
     func present(_ module: UIViewController, animated: Bool) {
         navigationController.present(module, animated: animated, completion: nil)
+    }
+    
+    func dismissModule(animated: Bool, completion: EmptyClosure?) {
+        navigationController.dismiss(animated: animated, completion: completion)
     }
 }

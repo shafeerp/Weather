@@ -48,9 +48,9 @@ class WeatherSceneViewModel: WeatherSceneVMPresentable {
     private func generateQueryParams() -> [String: String]? {
         guard let userLocation = userLocation else { return nil }
         var queryParams = [String: String]()
-        queryParams["latitude"] = String(userLocation.latitude)
-        queryParams["longitude"] = String(userLocation.longitude)
-        queryParams["current_weather"] = "true"
+        queryParams[WeatherConstants.WeatherScene.latitude] = String(userLocation.latitude)
+        queryParams[WeatherConstants.WeatherScene.longitude] = String(userLocation.longitude)
+        queryParams[WeatherConstants.WeatherScene.currentWeather] = "true"
         return queryParams
     }
 
@@ -62,6 +62,10 @@ class WeatherSceneViewModel: WeatherSceneVMPresentable {
         case .failure(let error):
             onError.value = error
         }
+    }
+    
+    func retryFetchingWeatherInfo() {
+        fetchWeatherInfo()
     }
 
     private func handleLocationStatus(status: LocationAccessStatus) {

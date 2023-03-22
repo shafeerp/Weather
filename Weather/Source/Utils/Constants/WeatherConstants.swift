@@ -15,6 +15,9 @@ enum WeatherConstants {
         static let temperatureValue = "%@ °"
         static let notAvailable = "N/A"
         static let defaultTimeZone = "GMT+1"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let currentWeather = "current_weather"
     }
     
     enum Config {
@@ -29,6 +32,8 @@ enum WeatherConstants {
     
     enum Alert {
         static let locationPermissionTitle = "Location Permission Required"
+        static let errorTitle = "Error Occured"
+        static let retry = "Retry"
         static let locationPermissionMessage = "Please enable location permissions in settings."
         static let settings = "Settings"
         static let cancel = "Cancel"

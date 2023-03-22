@@ -9,7 +9,6 @@ protocol WeatherSceneVMPresentable {
     var renderUI: Bindable<SceneViewType> { get set }
     var loadWeatherData: Bindable<WeatherInfo> { get set }
     var isFetchingAPI: Bindable<Bool> { get set }
-    var onError: Bindable<WeatherNetworkingError> { get set }
     func requestLocationAccess()
     func viewDidLoad()
 }

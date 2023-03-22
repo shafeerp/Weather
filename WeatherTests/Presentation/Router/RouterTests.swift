@@ -31,6 +31,15 @@ class RouterTests: XCTestCase {
         sut.setRootModule(module: module)
         XCTAssertTrue(mockNavigation.isRootControllerSet)
     }
+    
+    func testDismiss() {
+        let mockNavigation = NavigationControllerMock()
+        let sut = getRouterSut(navigationController: mockNavigation)
+        let module = UIViewController()
+        sut.present(module, animated: true)
+        sut.dismissModule(animated: true, completion: nil)
+        XCTAssertTrue(mockNavigation.isDismissed)
+    }
 }
 
 
@@ -39,11 +48,16 @@ class NavigationControllerMock: UINavigationController {
     
     var isPresented: Bool = false
     var isRootControllerSet: Bool = false
+    var isDismissed: Bool = false
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         isPresented = true
     }
     override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         isRootControllerSet = true
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        isDismissed = true
     }
 }

@@ -21,6 +21,10 @@ class WeatherSceneCoordinator: WeatherCoordinator {
             guard let self = self else { return }
             self.showLocationDeniedAlert()
         }
+        viewModel.onError.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.showErrorAlert(viewModel: viewModel)
+        }
         weatherScene?.viewModel = viewModel
         router.setRootModule(module: weatherScene!)
     }
@@ -35,6 +39,18 @@ class WeatherSceneCoordinator: WeatherCoordinator {
         let cancelAction = UIAlertAction(title: WeatherConstants.Alert.cancel,
                                          style: .cancel)
         alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        router.present(alertController, animated: true)
+    }
+    
+    private func showErrorAlert(viewModel: WeatherSceneViewModel) {
+        let alertController = UIAlertController(title: WeatherConstants.Alert.errorTitle,
+                                                message: WeatherConstants.Networking.APIFailed,
+                                                preferredStyle: .alert)
+        let okAction = UIAlertAction(title: WeatherConstants.Alert.retry, style: .default, handler: { _ in
+            self.router.dismissModule(animated: true, completion: nil)
+            viewModel.retryFetchingWeatherInfo()
+        })
         alertController.addAction(okAction)
         router.present(alertController, animated: true)
     }
